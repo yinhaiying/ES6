@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array.of</title>
+</head>
+<body>
+	<script>
+		/*
+    Array.of()：生成任意个指定参数的数组
+
+		*/
+		var arr3 = new Array(7,8,9)
+		console.log(arr3)// [7,8,9]
+		// new Array传入多个元素，是作为元素生成数组但是如果传入一个元素那么是作为长度，而我不是元素。如果我们想要以传入的数作为元素，那么就可以使用Array.of()；
+
+		var arr = new Array(7);
+		console.log(arr); // [empty × 7] 生成7个undefined的数组
+
+		// 如果我们想要实现的是，生成一个元素为7的数组，那么可以通过Array.of来实现
+		var arr2 = Array.of(7);
+		console.log(arr2) //[7]
+
+
+	</script>
+</body>
+</html>

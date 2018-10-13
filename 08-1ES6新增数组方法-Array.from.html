@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6新增数组的方法</title>
+</head>
+<body>
+	<div class="item">1</div>
+	<div class="item">2</div>
+	<div class="item">3</div>
+	<div class="item">4</div>
+	<div class="item">5</div>
+	<script>
+		/*
+    ES6新增数组的方法
+    静态方法：
+    	Array.from() 将类似数组的结构转化成数组
+    	Array.of() 通过多个参数生成数组
+    原型方法
+    [].copyWithin(target,start,end)通过自身数据在指定位置替换数据
+    [].find()  
+    [].findIndex()
+    [].fill()填充
+		*/
+    
+
+    // Array.from()把对象转化为数组，但是对象必须满足来跟那个条件
+    // 对象必须具有length属性
+    // 对象的属性必须是 0,1,2。且不能超过length-1的长度
+    var obj = {
+    	'0':'yin',
+    	// '3':'hai', //属性3 超过length-1
+    	'1':'hai',
+    	length:2
+    }
+    var arr = Array.from(obj);
+    console.log(arr)
+
+    // Array.from()还可以接收第二个参数，是一个函数
+    var arr2 = Array.from(obj,function(item,index){
+      return item + index;
+    })
+    console.log(arr2)  //["yin0", "hai1"]
+
+    // 将实现了iterable接口的对象转化为数组.比如set和伪数组
+    var set = new Set(['hello','world']);
+    console.log(set)
+    var arr3 = Array.from(set);
+    console.log(arr3)  //["hello", "world"]
+
+    // 将伪数组转化为数组
+    var aItem = document.querySelectorAll('.item');
+    // aItem.slice(1,2);  //aItem.slice is not a function 伪数组不具有slice方法
+    var arr4 = Array.from(aItem);
+    arr4.slice(1,2)  //Array.from将伪数组转化为数组
+    
+
+
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let 和 const</title>
+</head>
+<body>
+	<script>
+		/*
+	let
+    1、块级作用域
+    2、无变量提升
+    3、暂时性死区
+    4、禁止重复声明
+
+    cosnt 
+    1、物理内存地址无法被修改.
+    
+
+		*/
+		const b = 3;
+		// b = 4;
+		const obj ={
+		  a:2
+		}
+
+		obj.a = 3;
+		// 通过Object.freeze()可以使对象属性无法被修改
+		Object.freeze(obj)
+		obj.a = 4;
+		console.log(obj.a)  //3
+		// obj = {
+		// 	a:3
+		// }  // Assignment to constant variable
+	</script>
+</body>
+</html>

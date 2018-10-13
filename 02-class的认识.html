@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class的认识</title>
+</head>
+<body>
+	<script>
+		// 传统的类的写法
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		// 给类添加静态方法
+		Person.showName = function(){
+			return 'helloworld'
+		}
+		// 给类添加公用方法 -原型
+		Person.changeName = function(name){
+			this.name = name;
+		}
+
+		Person.changeAge = function(age){
+			this.age = age;
+		}
+		// 添加info属性
+		Object.defineProperty(Person.prototype,'info',{
+			get:function(){
+				return 'name:' + this.name +'|age:' + this.age
+			}
+		})
+		// 静态方法是不通过new来执行
+		console.log(Person.showName())
+
+		var person = new Person('haiying',24);
+		console.log(person)
+
+
+		// 子类
+		function Sub(name,age,job){
+			// 继承属性
+			Person.call(this,name,age);
+			this.job = job;
+		}
+
+		// 继承静态方法
+		Sub.__proto__ = Person;
+		// 继承公有方法
+		Sub.prototype = Person.prototype;
+		// 添加新方法
+		Sub.prototype.changeJob = function(job){
+			this.job = job;
+		}
+		var sub = new Sub('liuyifei',31,123456);
+		console.log(sub)
+
+
+
+        // 使用ES6class类的方式来实现继承
+        class Person {
+            //function Person(name,age){
+				// this.name = name;
+				// this.age = age;
+		    //}
+        	// 相当于构造函数
+        	constructor(name,age){
+        		this.name = name;
+        		this.age = age;
+        	}
+        	// 给类添加静态方法
+			// Person.showName = function(){
+			// 	return 'helloworld'
+			// }
+			// 静态方法通过关键字static来声明
+			static showName(){
+				return 'helloworld'
+			}
+
+			// 给类添加公用方法 -原型
+			// Person.changeName = function(name){
+			// 	this.name = name;
+			// }
+			changeName(name){
+				this.name = name;
+			}
+
+			// Person.changeAge = function(age){
+			// 	this.age = age;
+			// }
+			changeAge(age){
+				this.age = age;
+			}
+			// 添加info属性获取
+			// Object.defineProperty(Person.prototype,'info',{
+			// 	get:function(){
+			// 		return 'name:' + this.name +'|age:' + this.age
+			// 	}
+			// })
+			get info(){
+				return 'name:' + this.name +'|age:' + this.age
+			}
+
+
+        }
+
+
+        // 子类
+		// function Sub(name,age,job){
+		// 继承属性
+		// 	Person.call(this,name,age);
+		// 	this.job = job;
+		// }
+		// 继承静态方法
+		// Sub.__proto__ = Person;
+		// 继承公有方法
+		// Sub.prototype = Person.prototype;
+		class Sub extends Person{
+			constructor(name,age,job){
+              super(name,age);
+              this.job = job;
+			}
+			// 添加新方法
+			// Sub.prototype.changeJob = function(job){
+			// 	this.job = job;
+			// }
+			changeJob(job){
+				this.job = job;
+			}
+
+		}
+
+		
+		
+		var sub = new Sub('liuyifei',31,123456);
+		console.log(sub)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	</script>
+</body>
+</html>
