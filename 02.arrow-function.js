@@ -112,6 +112,12 @@ let constroller3 = {
   },
 };
 
+/* 
+箭头函数不能使用arguments,super和new.target，此外箭头函数没有prototype属性，不能作为构造函数。
+
+
+*/
+
 
 
 
